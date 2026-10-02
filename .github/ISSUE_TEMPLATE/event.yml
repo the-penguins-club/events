@@ -1,0 +1,287 @@
+name: "📅 New Community Event"
+description: "Publish a new meetup, workshop, hackathon, or unconference for The Penguins Club"
+title: "[Event]: "
+labels: ["event", "upcoming"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Welcome to The Penguins Club Event Publisher
+        Submitting this issue will register an event on [thepenguins.club/events](https://thepenguins.club/events).
+        All fields are parsed automatically by the website build engine.
+
+  - type: input
+    id: title
+    attributes:
+      label: Event Title
+      description: The official public title of the event
+      placeholder: "e.g., Touch Grass: The Unplugged Linux Gathering & Nature Unconference"
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: URL Slug
+      description: URL path for /events/[slug] (lowercase letters, numbers, and hyphens only). Leave blank to auto-generate from title.
+      placeholder: "e.g., touch-grass"
+    validations:
+      required: false
+
+  - type: input
+    id: track_tag
+    attributes:
+      label: Track / Category Tag
+      description: High-level category pill shown on badges
+      placeholder: "e.g., SUPER EVENT • OUTDOOR HACKER PICNIC & KEY-SIGNING"
+    validations:
+      required: true
+
+  - type: input
+    id: start_date_iso
+    attributes:
+      label: Start Date & Time (ISO 8601 with timezone)
+      description: Required for countdown timer and calendar .ics generation (BST is +06:00)
+      placeholder: "2026-11-07T13:30:00+06:00"
+    validations:
+      required: true
+
+  - type: input
+    id: end_date_iso
+    attributes:
+      label: End Date & Time (ISO 8601 with timezone)
+      description: Required for countdown timer and calendar .ics generation
+      placeholder: "2026-11-07T18:00:00+06:00"
+    validations:
+      required: true
+
+  - type: input
+    id: time_string
+    attributes:
+      label: Human-Readable Time String
+      description: Displayed in the meta strip and schedule card
+      placeholder: "Saturday • 13:30 - 18:00 BST (Sunset)"
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location (Short / Display Name)
+      description: General venue area shown in hero and list views
+      placeholder: "Ramna Park Lake Amphitheatre & Banyan Green, Dhaka"
+    validations:
+      required: true
+
+  - type: input
+    id: venue_name
+    attributes:
+      label: Exact Venue Name
+      description: Specific meeting point or room
+      placeholder: "Ramna Park Green Space (Near Lake Steps)"
+    validations:
+      required: true
+
+  - type: input
+    id: venue_address
+    attributes:
+      label: Venue Physical Address
+      description: Complete street address for attendees and maps
+      placeholder: "Moulana Bhashani Rd, Ramna, Dhaka 1000, Bangladesh"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: venue_type
+    attributes:
+      label: Venue Type
+      description: Select how attendees participate
+      options:
+        - outdoor
+        - in-person
+        - hybrid
+        - virtual
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Visual Color Theme
+      description: Determines accent colors, gradients, and styling
+      options:
+        - grass
+        - hacktoberfest
+        - linux
+        - git
+        - selfhost
+    validations:
+      required: true
+
+  - type: dropdown
+    id: is_super
+    attributes:
+      label: Is this a Super Event?
+      description: Super events get distinct featured styling and special badges
+      options:
+        - "false"
+        - "true"
+    validations:
+      required: false
+
+  - type: input
+    id: super_badge
+    attributes:
+      label: Super Event Badge Label
+      description: Only applies if Super Event is true
+      placeholder: "SUPER EVENT 🌿"
+    validations:
+      required: false
+
+  - type: input
+    id: cost
+    attributes:
+      label: Admission Fee / Cost
+      description: TPC community events are free
+      placeholder: "100% Free • Open to All"
+    validations:
+      required: true
+
+  - type: input
+    id: capacity
+    attributes:
+      label: Venue Capacity
+      description: Maximum attendee capacity (leave empty for unlimited/open lawn)
+      placeholder: "50 Seats • Open RSVP"
+    validations:
+      required: false
+
+  - type: input
+    id: registration_url
+    attributes:
+      label: Registration / RSVP URL
+      description: Telegram invite link, Google Form, or RSVP portal
+      placeholder: "https://t.me/penguinsclubnetwork"
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Event Banner Graphic (URL or path)
+      description: Image URL or public asset path
+      placeholder: "/images/meetups/meetup-touch-grass.svg"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Short Summary
+      description: 1-2 sentences used for search cards, social embeds, and hero intro
+      placeholder: "An unplugged, open-air super gathering! Step away from backlit screens, power down the daemons, and touch actual grass with fellow Linux and FOSS enthusiasts."
+    validations:
+      required: true
+
+  - type: textarea
+    id: full_overview
+    attributes:
+      label: Full Overview Paragraphs
+      description: Detailed introduction to the event. Separate paragraphs with blank lines.
+      placeholder: |
+        In a world dominated by endless CI/CD runs, flickering terminal windows, and hyper-connected screens, we often forget the raw physical reality beneath our feet. "Touch Grass" is The Penguins Club's signature super unconference.
+
+        Leave your AC server rooms behind. Bring a picnic blanket, portable solar packs, and your offline hardware projects.
+    validations:
+      required: true
+
+  - type: textarea
+    id: highlights
+    attributes:
+      label: Key Highlights & Activities
+      description: List each highlight item on a new line (use bullet points or emojis)
+      placeholder: |
+        - 🌿 100% Certified Grass-Touching: Reconnect with sunlight, trees, and your fellow humans without notifications.
+        - 📡 Solar & Battery LoRa Mesh Lab: Deploying Meshtastic & Briar peer-to-peer off-grid communication nodes.
+        - 🔑 Sunlight GPG Key-Signing Protocol: Cross-sign public keys in person to strengthen our Web of Trust.
+        - 🎒 Offline Digital Ark with Kiwix: Entire offline mirrors of Wikipedia and ArchWiki on Raspberry Pi.
+        - ⚡ Unplugged Lightning Talks: Zero projector slides! 5-minute talks with handheld mini-whiteboards.
+        - 🍉 Lawn Picnic & Frisbee Tournament: Fresh seasonal fruits, hot tea, samosas, and open-air games.
+    validations:
+      required: true
+
+  - type: textarea
+    id: agenda
+    attributes:
+      label: Schedule & Agenda Timeline
+      description: Provide the schedule as a YAML list or Markdown table
+      placeholder: |
+        - time: "13:30 - 14:00"
+          title: "Check-In, Picnic Mat Circle & Fingerprint Verification"
+          speaker: "TPC Welcome Crew"
+          description: "Find our circle under the giant banyan tree by the lake, lay out mats, grab your badge, and verify GPG fingerprint sheets."
+        - time: "14:00 - 14:40"
+          title: "Opening Circle: Digital Ecology & The Art of Disconnecting"
+          speaker: "The Penguins Club Core"
+          description: "A grounded conversation on developer burnout, open-source sustainability, and mindful computing."
+        - time: "14:40 - 15:30"
+          title: "Hands-On Lab: Deploying Off-Grid LoRa & Meshtastic Networks"
+          speaker: "Hardware & Radio SIG"
+          description: "Flashing ESP32 and nRF52 LoRa boards, configuring repeaters, and testing encrypted text packets."
+    validations:
+      required: true
+
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Checklist of knowledge or preparation needed (one item per line)
+      placeholder: |
+        - Basic curiosity about GNU/Linux and software freedom
+        - No prior radio or GPG experience necessary — beginners warmly welcomed
+        - If participating in GPG signing: generate a key beforehand and bring printed fingerprint strips
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_to_bring
+    attributes:
+      label: What to Bring
+      description: Checklist of items attendees should pack (one item per line)
+      placeholder: |
+        - Picnic mat, light blanket, or folding lawn chair
+        - Reusable water bottle and personal tea mug (zero disposable plastic)
+        - Portable power bank or solar battery pack
+        - Your favorite offline single-board computer, LoRa node, or retro device
+    validations:
+      required: true
+
+  - type: textarea
+    id: speakers
+    attributes:
+      label: Facilitators & Speakers
+      description: List of session hosts and mentors (YAML format)
+      placeholder: |
+        - name: "Fahim Rahman"
+          role: "Hardware SIG Lead & Mesh Tinkerer"
+          github: "fahim-radio"
+          bio: "Amateur radio operator and advocate for decentralized communications."
+        - name: "Nafis Sadik"
+          role: "Cryptography & Privacy Steward"
+          github: "sadik-crypto"
+          bio: "Security researcher focusing on GPG Web-of-Trust and reproducible builds."
+    validations:
+      required: false
+
+  - type: textarea
+    id: faqs
+    attributes:
+      label: Frequently Asked Questions (FAQs)
+      description: Common questions and answers (YAML format or Q&A)
+      placeholder: |
+        - question: "Is there any ticket or registration fee?"
+          answer: "Absolutely not. All Penguins Club events are 100% free and open to everyone, funded entirely by community volunteers."
+        - question: "What if it rains on the day?"
+          answer: "If heavy rain occurs, we will relocate to the covered amphitheatre arcade on Moulana Bhashani Road. Instant updates will be posted to Telegram."
+    validations:
+      required: false

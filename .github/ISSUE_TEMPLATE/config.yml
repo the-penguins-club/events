@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "The Penguins Club Community Chat"
+    url: "https://t.me/penguinsclubnetwork"
+    about: "Ask questions, discuss talk ideas, or coordinate meetups with community members."
+  - name: "The Penguins Club Main Website"
+    url: "https://thepenguins.club/events"
+    about: "View scheduled upcoming and past events on our official events page."
