@@ -1,0 +1,11 @@
+name: Rebuild site
+on:
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh api repos/the-penguins-club/web/dispatches -f event_type=events-updated
+        env:
+          GH_TOKEN: ${{ secrets.WEB_DISPATCH_TOKEN }}
